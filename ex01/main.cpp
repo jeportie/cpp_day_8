@@ -18,10 +18,19 @@ int main(void)
 {
 	std::cout << "Hello World!" << std::endl;
 
-	Span sp = Span(5);
+	Span sp = Span(11);
 
 	try
 	{	
+		// Fill a vector with numbers
+		std::vector<int> numbers;
+		for (int i = 1; i <= 5; ++i)
+			numbers.push_back(i * 10);
+
+	    // Add all numbers from the vector to the Span at once
+		sp.addNumbers(numbers.begin(), numbers.end());
+
+
 		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);

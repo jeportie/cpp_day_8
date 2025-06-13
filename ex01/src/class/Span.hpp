@@ -14,7 +14,6 @@
 #define Span_HPP
 
 #include <iostream>
-#include <sys/types.h>
 #include <vector>
 
 class Span
@@ -22,11 +21,23 @@ class Span
 public:
     Span(unsigned int N);
     Span(const Span& src);
+    Span& operator=(const Span& rhs);
     ~Span(void);
 
-    Span&				operator=(const Span& rhs);
-
     void				addNumber(int n);
+	// Add multiple values in container at once using a range of iterator from another container
+	template <typename InputIterator>
+    void addNumbers(InputIterator begin, InputIterator end)
+	{
+		while (begin != end)
+		{
+			if (_SpanVector.size() >= _max)
+				throw std::out_of_range("Error: Cannot add more numbers: Span is full!");
+			this->addNumber(*begin);
+			++begin;
+		}
+	}
+
     int					shortestSpan(void);
     int					longestSpan(void);
 
