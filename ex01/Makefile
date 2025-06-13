@@ -6,11 +6,11 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/06 08:55:40 by jeportie          #+#    #+#              #
-#    Updated: 2025/04/17 14:16:49 by jeportie         ###   ########.fr        #
+#    Updated: 2025/06/13 11:35:50 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind 
+NAME = span 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 VALFLAGS = --leak-check=full
@@ -23,6 +23,8 @@ ARGS=$(filter-out $@,$(MAKECMDGOALS))
 #### BEGIN AUTO GENERATED FILES ###
 # List of source files:
 SRC = \
+  src/class/Span.cpp 
+### END AUTO GENERATED FILES ###
 
 # Create object for main.cpp
 MAIN_OBJ = $(OBJDIR)/main.o

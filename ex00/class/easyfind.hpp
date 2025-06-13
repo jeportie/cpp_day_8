@@ -13,24 +13,29 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-#include <vector>
+#include <algorithm>
+#include <exception>
 #include <iostream>
 
-template <typename T>
-void	easyfind(T type, int i)
+class NotFindException : public std::exception
 {
-	size_t j;
-
-	std::vector<T> nums_vector;
-	nums_vector.push_back(10);
-	nums_vector.push_back(42);
-	j = 0;
-	while (j < nums_vector.size())
+public:
+	virtual const char* what() const throw()
 	{
-		std::cout << nums_vector[i] << std::endl;
-		j++;
+		return ("Element not found");
 	}
-	nums_vector.assign
+};
+
+template <typename T> // considering T as container 
+typename T::const_iterator easyfind(T& container, int value)
+{
+	typename T::iterator it;
+
+	it = std::find(container.begin(), container.end(), value);
+	if (it == container.end())
+		throw NotFindException();
+	std::cout << *it << std::endl;
+	return (it);
 }
 
 #endif  // ***************************************************** EASYFIND_HPP //
