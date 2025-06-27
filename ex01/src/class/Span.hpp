@@ -24,32 +24,32 @@ public:
     Span& operator=(const Span& rhs);
     ~Span(void);
 
-    void				addNumber(int n);
-	// Add multiple values in container at once using a range of iterator from another container
-	template <typename InputIterator>
+    void addNumber(int n);
+    // Add multiple values in container at once using a range of iterator from another container
+    template<typename InputIterator>
     void addNumbers(InputIterator begin, InputIterator end)
-	{
-		while (begin != end)
-		{
-			if (_SpanVector.size() >= _max)
-				throw std::out_of_range("Error: Cannot add more numbers: Span is full!");
-			this->addNumber(*begin);
-			++begin;
-		}
-	}
+    {
+        while (begin != end)
+        {
+            if (_SpanVector.size() >= _max)
+                throw std::out_of_range("Error: Cannot add more numbers: Span is full!");
+            this->addNumber(*begin);
+            ++begin;
+        }
+    }
 
-    int					shortestSpan(void);
-    int					longestSpan(void);
+    int shortestSpan(void);
+    int longestSpan(void);
 
-	int					getMax(void) const;
-	void				printContainer(std::ostream& out) const;
+    int  getMax(void) const;
+    void printContainer(std::ostream& out) const;
 
 private:
-    unsigned int		_max;
-	std::vector<int>	_SpanVector;
+    unsigned int     _max;
+    std::vector<int> _SpanVector;
 };
 
 // Overload operator << for output streaming
-std::ostream&			operator<<(std::ostream& out, const Span& in);
+std::ostream& operator<<(std::ostream& out, const Span& in);
 
 #endif  // ********************************************************* Span_HPP //

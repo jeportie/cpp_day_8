@@ -33,9 +33,11 @@ void testMutantStack() {
 	std::cout << "Iterating MutantStack:" << std::endl;
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
-	for (; it != ite; ++it)
+	while (it != ite)
+	{
 		std::cout << *it << std::endl;
-
+		++it;
+	}
 	std::cout << "Testing std::stack compatibility:" << std::endl;
 	std::stack<int> s(mstack);
 	std::cout << "Copied stack top: " << s.top() << std::endl;
